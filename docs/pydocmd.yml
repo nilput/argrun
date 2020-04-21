@@ -1,0 +1,28 @@
+site_name: "argrun"
+
+generate:
+- docs.md:
+  - argrun.argrun++
+
+pages:
+- Home: index.md << README.md 
+- Docs: docs.md
+
+docs_dir: sources
+gens_dir: build/pydocmd     # This will end up as the MkDocs 'docs_dir'
+site_dir: build/site
+theme:    readthedocs
+loader:   pydocmd.loader.PythonLoader
+preprocessor: pydocmd.preprocessors.simple.Preprocessor
+
+# Whether to output headers as markdown or HTML.  Used to workaround
+# https://github.com/NiklasRosenstein/pydoc-markdown/issues/11.  The default is
+# to generate HTML with unique and meaningful id tags, which can't be done with
+# markdown.
+#
+# Note: if using the simple generator mode, this will default to 'markdown'
+# instead of 'html'.
+headers: markdown
+
+additional_search_paths:
+- ..

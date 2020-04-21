@@ -18,23 +18,38 @@ class ArgSpec:
     def get_arg(self, parsed_args):
         return parsed_args.get(self.key(), None)
     def key(self):
+        if (len(self.arg_spec_args) > 1) and \
+           isinstance(self.arg_spec_args[1], str) and \
+           self.arg_spec_args[1].startswith('--'):
+            return self.arg_spec_args[1].strip('-')
         return self.arg_spec_args[0].strip('-')
 
 
-class ArgumentParser:
+class ArgumentRunner:
+    '''
+    ArgumentRunner offers a decorator, parses arguments, and allows decorated functions to be ran
+    '''
+    
     def __init__(self):
         self.parser = argparse.ArgumentParser()
         self.funcs = []
         self.parsed_args = None
-    '''
-        Parses arguments and returns the result as a dictionary
-        takes arguments that argparse.parse_args() takes
-    '''
+        '''
+            a dictionary containing parsed arguments
+        '''
+    
     def parse_args(self, *args, **kwargs):
+        '''
+        Parses arguments and returns the result as a dictionary
+        '''
         parsed_args = vars(self.parser.parse_args(*args, **kwargs))
         self.parsed_args = parsed_args
         return parsed_args
-    def parses(self, *args, **kwargs):
+    def parse(self, *args, **kwargs):
+        '''
+        a decorator that defines the arguments to be parsed
+        and associates it with the decorated method
+        '''
         when = kwargs.pop('when', None)
         self.parser.add_argument(*args, **kwargs)
         tmp = self
@@ -45,11 +60,11 @@ class ArgumentParser:
                 result = func(*args, **kwargs)
             return wrapped
         return decorator
-    '''
+    
+    def run(self, *args, **kwargs):
+        '''
         Runs all decorated functions
-        if parse_args was not called before, then it calls it with the passed arguments
-    '''
-    def run(*args, **kwargs):
+        '''
         if self.parsed_args is None:
             self.parse_args(*args, **kwargs)
         for func_spec in self.funcs:
@@ -57,5 +72,8 @@ class ArgumentParser:
                 arg = func_spec.get_arg(self.parsed_args)
                 func_spec.func(arg)
     def add_argument(self, *args, **kwargs):
+        '''
+        adds an argument to be parsed without being run
+        '''
         self.parser.add_argument(*args, **kwargs)
 

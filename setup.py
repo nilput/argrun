@@ -2,7 +2,7 @@ from distutils.core import setup
 setup(
   name = 'argrun',
   packages = ['argrun'], 
-  version = '0.1',  
+  version = '0.2.0',  
   license='MIT', 
   description = 'a small library that wraps argparse to map arguments to decorated functions',
   author = 'nilput',                  
