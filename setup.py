@@ -1,13 +1,13 @@
 from distutils.core import setup
 setup(
-  name = 'decoyarg',
-  packages = ['decoyarg'], 
+  name = 'argrun',
+  packages = ['argrun'], 
   version = '0.1',  
   license='MIT', 
   description = 'a small library that wraps argparse to map arguments to decorated functions',
   author = 'nilput',                  
   author_email = 'nilputs@gmail.com',   
-  url = 'https://github.com/nilput/decoyarg/',  
+  url = 'https://github.com/nilput/argrun/',  
   download_url = 'MISSING', 
   keywords = ['argparse', 'arguments', 'cli'],
   install_requires=[        
