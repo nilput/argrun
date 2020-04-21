@@ -1,0 +1,1 @@
+from .decoyarg import ArgumentParser
