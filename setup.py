@@ -8,7 +8,7 @@ setup(
   author = 'nilput',                  
   author_email = 'nilputs@gmail.com',   
   url = 'https://github.com/nilput/argrun/',  
-  download_url = 'MISSING', 
+  download_url = 'https://github.com/nilput/argrun/releases/download/v0.1/argrun-0.1.tar.gz', 
   keywords = ['argparse', 'arguments', 'cli'],
   install_requires=[        
           'argparse',
