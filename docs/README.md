@@ -1,6 +1,6 @@
 # argrun
 
-a library that wraps argparse, mapping arguments to decorated functions
+a library that wraps [argparse](https://docs.python.org/3/library/argparse.html), mapping arguments to decorated functions
 
 functions are only called if the associated command line argument is present/non-empty
 
@@ -26,6 +26,8 @@ if __name__ == '__main__':
 ```
 
 ## Documentation:
+
+See also [argparse](https://docs.python.org/3/library/argparse.html)
 
     
 

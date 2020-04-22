@@ -1,6 +1,6 @@
 # argrun
 
-a library that wraps argparse, mapping arguments to decorated functions
+a library that wraps [argparse](https://docs.python.org/3/library/argparse.html), mapping arguments to decorated functions
 
 functions are only called if the associated command line argument is present/non-empty
 
@@ -15,17 +15,19 @@ $ pip install argrun
 from functools import reduce
 import argrun 
 
-parser = argrun.ArgumentParser()
+runner = argrun.ArgumentRunner()
 
-@parser.parses('-m', '--multiply', help='multiplies numbers', nargs='*')
+@runner.parse('-m', '--multiply', help='multiplies numbers', nargs='*')
 def multiply(args):
     print(reduce(lambda x,y: x * y, map(int, args)))
 
 if __name__ == '__main__':
-    parser.run()
+    runner.run()
 ```
 
 ## Documentation:
+
+See also [argparse](https://docs.python.org/3/library/argparse.html)
 
     
 

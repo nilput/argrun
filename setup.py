@@ -2,9 +2,10 @@ from distutils.core import setup
 setup(
   name = 'argrun',
   packages = ['argrun'], 
-  version = '0.2.0',  
+  version = '0.2.1',  
   license='MIT', 
   description = 'a small library that wraps argparse to map arguments to decorated functions',
+  long_description = 'a small library that wraps argparse to map arguments to decorated functions',
   author = 'nilput',                  
   author_email = 'nilputs@gmail.com',   
   url = 'https://github.com/nilput/argrun/',  
