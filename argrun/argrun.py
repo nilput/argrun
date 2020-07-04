@@ -21,8 +21,15 @@ class ArgSpec:
         if (len(self.arg_spec_args) > 1) and \
            isinstance(self.arg_spec_args[1], str) and \
            self.arg_spec_args[1].startswith('--'):
-            return self.arg_spec_args[1].strip('-')
+            return self.arg_spec_args[1].strip('-').replace('-','_')
         return self.arg_spec_args[0].strip('-')
+    def __repr__(self):
+        name = 'unknown'
+        try:
+            name = self.func.__name__
+        except:
+            pass
+        return '[ArgSpec {}, {}, {}]'.format(self.arg_spec_args, self.arg_spec_kwargs, name)
 
 
 class ArgumentRunner:
